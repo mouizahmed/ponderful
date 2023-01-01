@@ -13,6 +13,7 @@ function Home() {
   const [sessionID, setSessionID] = useState("");
 
   let navigate = useNavigate();
+  console.log(process.env);
   const onSubmit = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/`).then((response) => {
       console.log(response.data);

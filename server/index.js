@@ -11,7 +11,7 @@ const { Session, Option } = require("./modules/Session.js");
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.API_URL,
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
   })
