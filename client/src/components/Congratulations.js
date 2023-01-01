@@ -18,7 +18,7 @@ function Congratulations({ selectedOption, sessionID }) {
   const [selection, setSelected] = useState();
 
   useState(() => {
-    axios.put("http://localhost:3001/selected-option", {
+    axios.put(`${process.env.REACT_APP_DB_URL}/selected-option`, {
       data: {
         selectedOption: selectedOption,
       },
