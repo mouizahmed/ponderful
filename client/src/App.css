@@ -133,6 +133,7 @@
     text-align: left;
     flex-direction: column;
     justify-content: center;
+    
   }
 
   .home {
@@ -143,6 +144,10 @@
     justify-content: center;
     background: #4e54c8;  
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  }
+
+  .area {
+    padding: 15px;
   }
 }
 
