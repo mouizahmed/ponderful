@@ -38,7 +38,7 @@ function Setup() {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       axios
-        .post(`${process.env.PUBLIC_DB_URL}/new-option`, values)
+        .post(`${process.env.REACT_APP_DB_URL}/new-option`, values)
         .then((response) => {
           console.log(response.data);
           setUpdate(!update);
@@ -65,7 +65,7 @@ function Setup() {
     setCopySuccess(true);
   };
 
-  const onDelete = (e, optionID) => {
+  const onDelete = (optionID) => {
     console.log(optionID);
 
     axios
