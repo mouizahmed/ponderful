@@ -13,7 +13,7 @@ function Results() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.PUBLIC_API_URL}/get-results/${sessionID}`)
+      .get(`${process.env.REACT_APP_API_URL}/get-results/${sessionID}`)
       .then((response) => {
         console.log(response.data);
         setOptions(response.data);
