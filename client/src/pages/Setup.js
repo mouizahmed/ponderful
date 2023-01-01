@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -17,10 +17,12 @@ import CloseIcon from "@mui/icons-material/Close";
 
 function Setup() {
   let { sessionID } = useParams();
+  let navigate = useNavigate();
   // const [option, setOption] = useState("");
   const [options, setOptions] = useState([]);
   const [update, setUpdate] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [loading, setLoading] = useState(true);
   //console.log(sessionID);
 
   const validationSchema = yup.object({
@@ -54,6 +56,7 @@ function Setup() {
       .then((response) => {
         console.log(response.data);
         setOptions(response.data);
+        setLoading(false);
       });
     console.log(window.location.href);
   }, [update]);
@@ -82,6 +85,10 @@ function Setup() {
       })
     );
   };
+
+  if (loading) {
+    return <div className="App"></div>;
+  }
 
   return (
     <div>
@@ -133,7 +140,7 @@ function Setup() {
           </Button>
         </Grid>
         <Grid item xs={1} md={1} lg={1} sx={{ textAlign: "left" }}>
-          <Button variant="contained" type="submit" sx={{ width: 200 }}>
+          <Button variant="contained" type="submit" sx={{ width: 200 }} onClick={() => navigate(`/results/session-id=/${sessionID}`)}>
             View Results
           </Button>
         </Grid>

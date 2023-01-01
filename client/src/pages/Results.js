@@ -10,6 +10,7 @@ import CardContent from "@mui/material/CardContent";
 function Results() {
   let { sessionID } = useParams();
   const [options, setOptions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -17,8 +18,13 @@ function Results() {
       .then((response) => {
         console.log(response.data);
         setOptions(response.data);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return <div className="App"></div>;
+  }
 
   return (
     <div>
