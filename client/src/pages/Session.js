@@ -30,7 +30,7 @@ function Session() {
   useEffect(() => {
     console.log("hi");
     axios
-      .get(`http://localhost:3001/get-options/${sessionID}`)
+      .get(`${process.env.PUBLIC_API_URL}/get-options/${sessionID}`)
       .then((response) => {
         // console.log(response.data.length);
         setOptions1(response.data);

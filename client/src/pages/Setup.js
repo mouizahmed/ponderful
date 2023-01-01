@@ -38,7 +38,7 @@ function Setup() {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       axios
-        .post("http://localhost:3001/new-option", values)
+        .post(`${process.env.PUBLIC_API_URL}/new-option`, values)
         .then((response) => {
           console.log(response.data);
           setUpdate(!update);
@@ -50,7 +50,7 @@ function Setup() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/get-options/${sessionID}`)
+      .get(`http://${process.env.PUBLIC_API_URL}/get-options/${sessionID}`)
       .then((response) => {
         console.log(response.data);
         setOptions(response.data);
@@ -60,7 +60,7 @@ function Setup() {
 
   const onSubmit = () => {
     navigator.clipboard.writeText(
-      "http://localhost:3000/" + `session/session-id=/${sessionID}`
+      `https://ponderful.vercel.app/` + `session/session-id=/${sessionID}`
     );
     setCopySuccess(true);
   };
@@ -69,7 +69,7 @@ function Setup() {
     console.log(optionID);
 
     axios
-      .delete("http://localhost:3001/delete-option", {
+      .delete(`${process.env.PUBLIC_API_URL}/delete-option`, {
         data: {
           optionID: optionID,
           sessionID: sessionID,

@@ -14,7 +14,7 @@ function Home() {
 
   let navigate = useNavigate();
   const onSubmit = () => {
-    axios.post("http://localhost:3001/").then((response) => {
+    axios.post(`${process.env.PUBLIC_API_URL}/`).then((response) => {
       console.log(response.data);
       setSessionID(response.data._id);
       navigate(`/setup/session-id=/${response.data._id}`);
