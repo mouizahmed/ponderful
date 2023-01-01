@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+require('dotenv').config();
 
 const crypto = require("crypto");
 
@@ -19,11 +20,13 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 mongoose.connect(
-  "mongodb+srv://mouizahmed:269BM4Mast24@cluster0.4hcja6j.mongodb.net/ponderful?retryWrites=true&w=majority",
+  `mongodb+srv://${process.env.USERNAME_DB}:${process.env.PASSWORD}@cluster0.4hcja6j.mongodb.net/ponderful?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
   }
 );
+
+app.get('/health', (_, res) => res.send('Testing health status'))
 
 app.post("/", async (req, res) => {
   // console.log(crypto.randomUUID());
