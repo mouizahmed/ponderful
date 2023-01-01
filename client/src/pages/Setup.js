@@ -18,12 +18,10 @@ import CloseIcon from "@mui/icons-material/Close";
 function Setup() {
   let { sessionID } = useParams();
   let navigate = useNavigate();
-  // const [option, setOption] = useState("");
   const [options, setOptions] = useState([]);
   const [update, setUpdate] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
   const [loading, setLoading] = useState(true);
-  //console.log(sessionID);
 
   const validationSchema = yup.object({
     option: yup
@@ -38,11 +36,9 @@ function Setup() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
       axios
         .post(`${process.env.REACT_APP_DB_URL}/new-option`, values)
         .then((response) => {
-          console.log(response.data);
           setUpdate(!update);
         });
 
@@ -54,11 +50,9 @@ function Setup() {
     axios
       .get(`${process.env.REACT_APP_DB_URL}/get-options/${sessionID}`)
       .then((response) => {
-        console.log(response.data);
         setOptions(response.data);
         setLoading(false);
       });
-    console.log(window.location.href);
   }, [update]);
 
   const onSubmit = () => {
@@ -69,7 +63,6 @@ function Setup() {
   };
 
   const onDelete = (optionID) => {
-    console.log(optionID);
 
     axios
       .delete(`${process.env.REACT_APP_DB_URL}/delete-option`, {

@@ -16,7 +16,6 @@ function Results() {
     axios
       .get(`${process.env.REACT_APP_DB_URL}/get-results/${sessionID}`)
       .then((response) => {
-        console.log(response.data);
         setOptions(response.data);
         setLoading(false);
       });

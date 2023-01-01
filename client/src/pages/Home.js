@@ -13,10 +13,8 @@ function Home() {
   const [sessionID, setSessionID] = useState("");
 
   let navigate = useNavigate();
-  console.log(process.env);
   const onSubmit = () => {
     axios.post(`${process.env.REACT_APP_DB_URL}/`).then((response) => {
-      console.log(response.data);
       setSessionID(response.data._id);
       navigate(`/setup/session-id=/${response.data._id}`);
     });

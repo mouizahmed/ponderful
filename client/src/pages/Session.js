@@ -28,11 +28,9 @@ function Session() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    console.log("hi");
     axios
       .get(`${process.env.REACT_APP_DB_URL}/get-options/${sessionID}`)
       .then((response) => {
-        // console.log(response.data.length);
         setOptions1(response.data);
         setOptions2(response.data.slice(1));
 
@@ -42,34 +40,13 @@ function Session() {
 
         setLoading(false);
       });
-    //console.log(window.location.href);
   }, [sessionID]);
 
-  //   const removeOption1 = (data) => { // RIGHT CLICKED
-
-  //     setOptions1(options1.filter((val) => val._id !== data._id));
-  //     setEndingIndex1(endingIndex1 + 1)
-
-  //   };
-
-  //   const removeOption2 = (data) => { // LEFT CLICKED
-  //     console.log(data.optionName);
-
-  //     setOptions2(options2.filter(function(val) { // OPTIONS2 IS RIGHT
-  //         return val._id !== data._id
-
-  //     }));
-  //     setOptions1(options1.filter((val) => val._id !== element2.current))
-  //     setEndingIndex2(endingIndex2 + 1)
-
-  //   };
-
+ 
   const firstOption = (data) => {
-    // console.log(data);
-    //setEndingIndex2(endingIndex2 + 1);
+
     const removed = options2[0];
-    //setOptions2(options2.splice(1))
-    console.log(removed._id);
+
     setSelectedOption(data);
     setOptions2(
       options2.splice(1).filter((val) => {
@@ -84,12 +61,8 @@ function Session() {
   };
 
   const secondOption = (data) => {
-    //setEndingIndex1(endingIndex2 + 1);
     const removed = options1[0];
     setSelectedOption(data);
-    //console.log(removed);
-    console.log(data);
-    //setOptions1(options1.splice(1));
     setOptions1(
       options1.splice(1).filter((val) => {
         return val._id !== data._id;
@@ -101,8 +74,6 @@ function Session() {
         return val._id !== removed._id;
       })
     );
-    //setOptions1(options1.filter((val) => val._id !== id));
-    //setOptions1(options1.filter((val) => val._id !== removed._id))
   };
 
   if (isLoading) {
@@ -191,10 +162,6 @@ function Session() {
               </Grid>
             </Grid>
           </Grid>
-          {/* {options.slice(0, 2).map((option) => (
-                    <div key={option._id}>{option.optionName}</div>
-                ))} */}
-          {/* <button onClick={next}>next</button> */}
         </div>
       </div>
     );
@@ -217,7 +184,7 @@ function Session() {
   } else {
     return (
       <div>
-        {console.log(options1)}
+      
         <Congratulations
           selectedOption={selectedOption}
           sessionID={sessionID}
