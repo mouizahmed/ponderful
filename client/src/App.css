@@ -134,8 +134,6 @@
     flex-direction: column;
     justify-content: center;
     padding: 15px;
-    background: #4e54c8;  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
   }
 
   .home {
