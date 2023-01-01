@@ -50,7 +50,7 @@ function Setup() {
 
   useEffect(() => {
     axios
-      .get(`http://${process.env.REACT_APP_DB_URL}/get-options/${sessionID}`)
+      .get(`${process.env.REACT_APP_DB_URL}/get-options/${sessionID}`)
       .then((response) => {
         console.log(response.data);
         setOptions(response.data);
