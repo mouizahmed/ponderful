@@ -38,7 +38,7 @@ function Setup() {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       axios
-        .post(`${process.env.PUBLIC_API_URL}/new-option`, values)
+        .post(`${process.env.PUBLIC_DB_URL}/new-option`, values)
         .then((response) => {
           console.log(response.data);
           setUpdate(!update);
@@ -50,7 +50,7 @@ function Setup() {
 
   useEffect(() => {
     axios
-      .get(`http://${process.env.REACT_APP_API_URL}/get-options/${sessionID}`)
+      .get(`http://${process.env.REACT_APP_DB_URL}/get-options/${sessionID}`)
       .then((response) => {
         console.log(response.data);
         setOptions(response.data);
@@ -69,7 +69,7 @@ function Setup() {
     console.log(optionID);
 
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/delete-option`, {
+      .delete(`${process.env.REACT_APP_DB_URL}/delete-option`, {
         data: {
           optionID: optionID,
           sessionID: sessionID,
