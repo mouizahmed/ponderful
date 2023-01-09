@@ -14,6 +14,10 @@ app.use(
     origin: process.env.API_URL,
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
+  }, {
+    origin: "http://localhost:3000",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
   })
 );
 app.use(bodyParser.json());

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css';
 
@@ -5,9 +6,16 @@ import Home from "./pages/Home";
 import Setup from "./pages/Setup";
 import Session from "./pages/Session";
 import Results from "./pages/Results";
+import axios from 'axios';
 
 
 function App() {
+
+useEffect(() => {
+  axios.get(`${process.env.REACT_APP_DB_URL}/health`)
+      .then((response) => {
+      })
+}, []);
 
   
 // axios.defaults.withCredentials = true;
