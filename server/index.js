@@ -62,8 +62,8 @@ app.delete("/delete-option", async (req, res) => {
   //console.log(req.body);
   const sessionID = req.body.sessionID;
   const optionID = req.body.optionID;
-  //console.log(sessionID);
-  //console.log(optionID);
+  console.log(sessionID);
+  console.log(optionID);
 
   const q = Option.deleteOne({ _id: optionID, sessionID: sessionID })
     .then((item) => console.log(item))

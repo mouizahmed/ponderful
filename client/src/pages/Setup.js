@@ -182,8 +182,8 @@ function Setup() {
                       >
                         <CloseIcon
                           className="delete"
-                          onClick={(e) => {
-                            onDelete(e, option._id);
+                          onClick={() => {
+                            onDelete(option._id);
                           }}
                         />
                       </Grid>
