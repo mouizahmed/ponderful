@@ -60,7 +60,6 @@ function Setup() {
   };
 
   const onDelete = (optionID) => {
-
     axios
       .delete(`${process.env.REACT_APP_DB_URL}/delete-option`, {
         data: {
@@ -89,7 +88,14 @@ function Setup() {
         sx={{ textAlign: "center" }}
       >
         <Grid item xs={2} md={2} lg={2}>
-          Option
+        <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: 30, sm: 40, md: 40, lg: 50 },
+            }}
+          >Add options to your pool</Typography>
+          People will choose between each option you create.
+          
         </Grid>
         <Grid item xs={2} md={2} lg={2}>
           <form onSubmit={formik.handleSubmit}>
@@ -98,7 +104,7 @@ function Setup() {
                 <TextField
                   id="option"
                   name="option"
-                  label="Option"
+                  label="Option Name"
                   value={formik.values.option}
                   onChange={formik.handleChange}
                   error={formik.touched.option && Boolean(formik.errors.option)}
@@ -130,7 +136,12 @@ function Setup() {
           </Button>
         </Grid>
         <Grid item xs={1} md={1} lg={1} sx={{ textAlign: "left" }}>
-          <Button variant="contained" type="submit" sx={{ width: 200 }} onClick={() => navigate(`/results/session-id=/${sessionID}`)}>
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{ width: 200 }}
+            onClick={() => navigate(`/results/session-id=/${sessionID}`)}
+          >
             View Results
           </Button>
         </Grid>

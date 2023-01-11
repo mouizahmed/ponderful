@@ -129,10 +129,11 @@
 @media screen and (max-width: 480px) {
   .App {
     height: 100vh;
-    align-items: left;
-    text-align: left;
+    align-items: center;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
+    display: flex;
     
   }
 

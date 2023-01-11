@@ -10,6 +10,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
+import { FaRandom } from 'react-icons/fa';
+
 function Session() {
   let { sessionID } = useParams();
   const [selectedOption, setSelectedOption] = useState();
@@ -18,6 +20,8 @@ function Session() {
   const [isLoading, setLoading] = useState(true);
   const [endingIndex1, setEndingIndex1] = useState(0);
   const [endingIndex2, setEndingIndex2] = useState(0);
+  const [firstSelected, setFirstSelected] = useState("");
+  const [secondSelected, setSecondSelected] = useState("");
 
   const [single, setSingle] = useState(false);
 
@@ -38,10 +42,10 @@ function Session() {
       });
   }, [sessionID]);
 
- 
   const firstOption = (data) => {
-
     const removed = options2[0];
+    setFirstSelected("primary.main");
+    setSecondSelected("");
 
     setSelectedOption(data);
     setOptions2(
@@ -58,6 +62,8 @@ function Session() {
 
   const secondOption = (data) => {
     const removed = options1[0];
+    setSecondSelected("primary.main");
+    setFirstSelected("");
     setSelectedOption(data);
     setOptions1(
       options1.splice(1).filter((val) => {
@@ -71,6 +77,17 @@ function Session() {
       })
     );
   };
+
+  const onRandom = () => {
+    const randomOption = Math.floor(Math.random() * (1 - 0+1) + 0);
+    // console.log(options2[0])
+    // console.log(options1[0])
+    if (randomOption === 0) {
+      firstOption(options1[0]);
+    } else if (randomOption === 1) {
+      secondOption(options2[0]);
+    }
+  }
 
   if (isLoading) {
     return <div className="App"></div>;
@@ -119,7 +136,7 @@ function Session() {
                   {
                     options1.map((data, i, row) => (
                       <Card
-                        sx={{ width: 150 }}
+                        sx={{ width: 150, borderColor: firstSelected}}
                         className="cardSession"
                         key={data._id}
                         onClick={() => firstOption(data)}
@@ -145,7 +162,7 @@ function Session() {
                   {
                     options2.map((data, i, row) => (
                       <Card
-                        sx={{ width: 150 }}
+                        sx={{ width: 150, borderColor: secondSelected }}
                         className="cardSession"
                         key={data._id}
                         onClick={() => secondOption(data)}
@@ -156,6 +173,9 @@ function Session() {
                   }
                 </Grid>
               </Grid>
+            </Grid>
+            <Grid item xs={2} md={2} lg={2} sx={{ textAlign: "center" }}>
+              <Button variant="contained" onClick={onRandom}><FaRandom /></Button>
             </Grid>
           </Grid>
         </div>
@@ -180,7 +200,6 @@ function Session() {
   } else {
     return (
       <div>
-      
         <Congratulations
           selectedOption={selectedOption}
           sessionID={sessionID}
