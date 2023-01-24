@@ -11,7 +11,7 @@ const { Session, Option } = require("./modules/Session.js");
 const app = express();
 app.use(
   cors({
-    origin: [process.env.API_URL, "http://localhost:3000"],
+    origin: ["https://ponderful.vercel.app", "http://localhost:3000"],
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
   })
