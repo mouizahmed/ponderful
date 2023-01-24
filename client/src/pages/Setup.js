@@ -54,7 +54,7 @@ function Setup() {
 
   const onSubmit = () => {
     navigator.clipboard.writeText(
-      `https://ponderful.vercel.app/` + `session/session-id=/${sessionID}`
+      `https://ponderful-backend.vercel.app/` + `session/session-id=/${sessionID}`
     );
     setCopySuccess(true);
   };
