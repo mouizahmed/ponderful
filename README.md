@@ -16,7 +16,7 @@ MongoDB, ExpressJS, NodeJS, ReactJS, and MUI.
 
 # Deployment
 
-[Render](https://render.com/) was used to host the back-end, and [Vercel](https://vercel.com/) to host the front-end.
+[Vercel](https://vercel.com/) to host the front and back-end.
 
 # Live Demo
 
@@ -25,4 +25,4 @@ MongoDB, ExpressJS, NodeJS, ReactJS, and MUI.
 # Bugs & Fixes
 
 - First request to the backend and database were extremely slow (only present during initial load of website).
-  - This has been fixed.
+  - This has been fixed by switching from Render to Vercel to host the back-end. (Render.com shuts down the server after inactivity, making the first request take significantly longer)
